@@ -1,0 +1,31 @@
+.border{
+    border: 2px solid red;
+    margin: 3px;
+}
+
+.flex{
+    display: flex;
+}
+
+.jsutify-contain{
+    justify-content: center;
+}
+
+.align-item{
+    align-items: center;
+}
+
+.bg-black{
+    background-color: black;
+}
+
+.bg-gray{
+    background-color: #121212;
+}
+.invert{
+    filter: invert(1);
+}
+
+.width{
+    width: 24px;
+}
