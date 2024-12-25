@@ -1,22 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
-    font-family: "Roboto", serif;;
+    font-family: "Roboto", serif;
+    ;
 }
 
 body {
     background-color: black;
 }
 
-.nav{
+.nav {
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
     margin: 8px 10px;
 }
 
-.nav .left{
+.nav .left {
     text-align: left;
     padding: 0px 130px 0px 21px;
 }
@@ -29,7 +31,7 @@ body {
     gap: 8px;
 }
 
-.nav.right{
+.nav.right {
     text-align: right;
 }
 
@@ -56,11 +58,13 @@ body {
     padding: 10px 12px;
     background-color: #1f1f1f;
     border-radius: 50%;
-} 
-.search input::placeholder{
+}
+
+.search input::placeholder {
     color: #b3b3a5;
 }
-.right .btn2{
+
+.right .btn2 {
     font-size: 16px;
     font-weight: 700;
     padding: 0px 31px;
@@ -69,7 +73,8 @@ body {
     height: 48px;
     cursor: pointer;
 }
-.right .btn1{
+
+.right .btn1 {
     font-size: 16px;
     background-color: transparent;
     color: #b3b3b3;
@@ -79,17 +84,189 @@ body {
 }
 
 
-.container .left{
+.container .left {
     width: 28vw;
     margin: 5px;
-}
-.container .right{
-    width: 72vw;
-    margin: 5px;
+    background-color: #121212;
     color: white;
-}
-.heading{
-    color: #b3b3b3;
-    font-size: 10px;
+    height: 89vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 10px;
 }
 
+.library-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #181818;
+}
+
+.library-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.library-title .icon {
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
+
+.add-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.cards {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.card {
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.footer {
+    padding: 20px;
+    background-color: #181818;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-links a {
+    color: gray;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.language-button {
+    background: none;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    border: 1px solid white;
+    padding: 5px 10px;
+    border-radius: 24px;
+}
+
+.language-button .icon {
+    width: 16px;
+    height: 16px;
+    fill: white;
+}
+
+.container .right {
+    width: 72vw;
+    margin: 5px;
+    height: 89vh;
+    color: white;
+    border-radius: 10px;
+    background-color: #121212;
+    position: relative;
+}
+.cardcontainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 34px;
+    max-height: 100%;
+    padding: 20px;
+    height: 65vh;
+    overflow-y: auto;
+}
+
+.cardcontainer .card{
+    width: 200px;
+    height: 277px;
+    padding: 10px;
+    position: relative;
+}
+
+.card .songphoto{
+    width: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+.playlist{
+    padding: 12px;
+}
+.playlist h1{
+    padding: 5px;
+}
+.card h2{
+    font-size: 16px;
+}
+.card p{
+    font-size: 14px;
+    color: #929092;
+}
+.card .playbutton{
+    background-color: #3be477;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    bottom: 30px;
+    right: 20px;
+    opacity: 0;
+    transition: all 1s ease-out;
+}
+.playbutton img{
+    height: 24px;
+}
+
+.playbar{
+    position: relative;
+    bottom: 0;
+    padding: 20px;
+}
+.songbuttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 17px;
+}
