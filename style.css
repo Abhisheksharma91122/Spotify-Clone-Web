@@ -351,11 +351,26 @@ body {
     height: 30px;
     cursor: pointer;
 }
-.songbuttons .songplaybtn{
+
+.playbox{
     height: 50px;
-    cursor: pointer;
 }
 
+.songbuttons #play{
+    height: 30px;
+    cursor: pointer;
+    width: 100%;
+    object-fit: contain;
+    padding-top: 10px;
+}
+
+.playinfo{
+    width: 30%;
+}
+.playtime{
+    width: 30%;
+    text-align: right;
+}
 .seekbar{
     background-color: #1f1f1f;
     height: 3px;
@@ -367,12 +382,13 @@ body {
     cursor: pointer;
 }
 .circle{
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     border-radius: 10px;
     background-color: #fe5f6f;
     position: absolute;
     bottom: -4px;
     left: 0%;
     cursor: pointer;
+    transition: all 0.5s ease-out;
 }
