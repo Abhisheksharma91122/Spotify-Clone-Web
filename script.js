@@ -27,13 +27,13 @@ function secondsToMinutesSeconds(seconds) {
     if (isNaN(seconds) || seconds < 0) {
         return "00:00";
     }
-    
+
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = Math.floor(seconds % 60);
-    
+
     const formattedMinutes = String(minutes).padStart(2, '0');
     const formattedSeconds = String(remainingSeconds).padStart(2, '0');
-    
+
     return `${formattedMinutes}:${formattedSeconds}`;
 }
 
@@ -44,14 +44,14 @@ const playMusic = (track, paused = false) => {
         play.src = "pause.svg";
     }
     document.querySelector(".topPart").querySelector(".playinfo").innerHTML = decodeURI(track);
-    
+
 }
 
 async function main() {
     let songs = await getSongs();
     console.log(songs)
 
-    playMusic(songs[0].replaceAll("%20", " "),true);
+    playMusic(songs[0].replaceAll("%20", " "), true);
     // add song in playlist 
     let songUL = document.querySelector(".songlist").getElementsByTagName("ul")[0]
     for (const song of songs) {
@@ -82,8 +82,8 @@ async function main() {
     })
 
     // Attach an event listener to play , next and previous 
-    play.addEventListener("click",()=>{
-        if(currentsong.paused){
+    play.addEventListener("click", () => {
+        if (currentsong.paused) {
             currentsong.play();
             play.src = "pause.svg";
         } else {
@@ -92,9 +92,12 @@ async function main() {
         }
     })
     // update the time and circle in seekbar
-    currentsong.addEventListener("timeupdate", ()=>{
+    currentsong.addEventListener("timeupdate", () => {
         document.querySelector(".playtime").innerHTML = `${secondsToMinutesSeconds(currentsong.currentTime)}/${secondsToMinutesSeconds(currentsong.duration)}`
-        document.querySelector(".circle").style.left = (currentsong.currentTime / currentsong.duration) *100 + "%";
+        document.querySelector(".circle").style.left = (currentsong.currentTime / currentsong.duration) * 100 + "%";
+        if (currentsong.currentTime == currentsong.duration) {
+            play.src = "play.svg";
+        }
     })
 
     // Add an event listener to seekbar
@@ -103,6 +106,14 @@ async function main() {
         document.querySelector(".circle").style.left = percent + "%";
         currentsong.currentTime = ((currentsong.duration) * percent) / 100
         console.log(Math.floor(percent));
+    })
+
+
+    // add an event listener to hamburger
+    document.querySelectorAll(".hamburger").forEach((ham) => {
+        ham.addEventListener("click", () => {
+            document.querySelector(".left").style.left = "0";
+        })
     })
 }
 

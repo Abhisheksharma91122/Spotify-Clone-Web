@@ -18,7 +18,12 @@ body {
     margin: 8px 10px;
 }
 
-.nav .left {
+.hamburger{
+    height: 45px;
+    display: none;
+}
+
+.nav .navleft {
     text-align: left;
     padding: 0px 130px 0px 21px;
 }
@@ -31,7 +36,7 @@ body {
     gap: 8px;
 }
 
-.nav.right {
+.nav .right {
     text-align: right;
 }
 
@@ -83,7 +88,6 @@ body {
     cursor: pointer;
 }
 
-
 .container .left {
     width: 28vw;
     margin: 5px;
@@ -122,6 +126,13 @@ body {
     color: white;
     font-size: 24px;
     cursor: pointer;
+}
+
+.close{
+    display: none;
+}
+.close{
+    height: 22px;
 }
 
 .songlist {
@@ -257,6 +268,20 @@ body {
     fill: white;
 }
 
+.footerbtn{
+    display: flex;
+    gap: 20px;
+}
+.sign-log-btn{
+    padding: 4px 19px;
+    border-radius: 24px;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    background-color: #100e0e;
+    color: white;
+}
+
 .container .right {
     width: 72vw;
     margin: 5px;
@@ -327,19 +352,21 @@ body {
 }
 
 .playbar {
-    position: relative;
-    bottom: 5px;
     background-color: black;
     border-radius: 10px;
     width: 96%;
-    margin: auto;
     height: 62px;
+    position: absolute;
+    bottom: 16px;
+    left: 2%;
+    height: 87px;
 }
 .topPart{
     display: flex;
     align-items: center;
     justify-content: space-around;
     gap: 44px;
+    margin-top: 10px;
 }
 .songbuttons {
     display: flex;
@@ -376,7 +403,7 @@ body {
     height: 3px;
     width: 95%;
     margin: auto;
-    margin-top: 1px;
+    margin-top: 5px;
     border: 5px;
     position: relative;
     cursor: pointer;
@@ -391,4 +418,108 @@ body {
     left: 0%;
     cursor: pointer;
     transition: all 0.5s ease-out;
+}
+
+
+/* adding media query to access in phone */
+
+@media (max-width: 1400px) {
+    .nav{
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+    }
+    .nav .navleft{
+        grid-column: 1/2;
+        padding-left: 25px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .hamburger1{
+        display: block;
+    }
+    .navleft:last-child{
+        height: 30px;
+    }
+    .nav .center{
+        grid-column: 2/3;
+    }
+    .nav .right{
+        grid-column: 3/-1;
+    }
+    .container .left{
+    width: 45%;
+    background-color: #121212;
+    height: 89vh;
+    position: absolute;
+    left: -100%;
+    transition: all 0.3s;
+    z-index: 1;
+    }
+    .container .right{
+        width: 100vw;
+        height: 94vh;
+    }
+}
+
+@media (max-width: 950px){
+    .nav{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+    }
+    .hamburger2{
+        display: inline;
+    }
+    .nav .navleft{
+        display: none;
+    }
+    .nav .center{
+        grid-column: 1/2;
+    }
+    .nav .right{
+        grid-column: 2/-1;
+    }
+}
+
+@media (max-width: 530px){
+    .nav{
+        grid-template-columns:1fr;
+        grid-template-rows: 1fr;
+    }
+    .nav .navleft{
+        position: absolute;
+        left: -100px;
+    }
+    .nav .center{
+        grid-column: 1/-1;
+    }
+    .hamburger2{
+        padding-right: 13%;
+    }
+    .nav .right{
+        position: absolute;
+        left: -100%;
+    }
+
+    .container .left{
+        width: 80%;
+    }
+    .container .right{
+        height: 91vh;
+    }
+    .topPart{
+        gap: 0;
+    }
+    .songbuttons{
+        gap: 12px;
+    }
+    #previous{
+        height: 19px;
+    }
+    #play{
+        height: 50px;
+    }
+    #next{
+        height: 19px;
+    }
 }
