@@ -17,11 +17,11 @@
                 <img class="invert" src="svg/logo.svg" alt="logo">
             </div>
             <div class="center">
-                    <img class="hamburger hamburger2" src="svg/hamburger.svg" alt="">
-                    <div class="home">
+                <img class="hamburger hamburger2" src="svg/hamburger.svg" alt="">
+                <div class="home">
                     <img class="invert width" src="svg/home.svg" alt="">
-                    </div>
-                
+                </div>
+
 
                 <div class="search">
                     <img width="21px" class="invert" src="svg/search.svg" alt="">
@@ -45,13 +45,13 @@
                         <img class="width invert" src="svg/library.svg" alt="">
                         <span>Your Library</span>
                     </div>
-                    <img class="close" src="svg/close.svg" alt="close image">
+                    <img id="close" class="close" src="svg/close.svg" alt="close image">
                     <button class="add-button">+</button>
                 </div>
 
                 <div class="songlist">
                     <ul>
-                    
+
                     </ul>
                 </div>
 
@@ -82,79 +82,7 @@
                 <div class="playlist">
                     <h1>Spotify Playlist</h1>
                     <div class="cardcontainer">
-                        <div class="card">
-                            <div class="playbutton">
-                                <img src="svg/playbutton.svg" alt="">
-                            </div>
-                            <img class="songphoto"
-                                src="https://i.scdn.co/image/ab67706f000000023f7b39872b6bb36288c1a52c" alt="">
-                            <h2>Hot Hits Hindi</h2>
-                            <p>Hottest Hindi music that India is listening to. Cover - Stree 2</p>
-                        </div>
-                        <div class="card">
-                            <div class="playbutton">
-                                <img src="svg/playbutton.svg" alt="">
-                            </div>
-                            <img class="songphoto"
-                                src="https://i.scdn.co/image/ab67706f000000023f7b39872b6bb36288c1a52c" alt="">
-                            <h2>Hot Hits Hindi</h2>
-                            <p>Hottest Hindi music that India is listening to. Cover - Stree 2</p>
-                        </div>
-                        <div class="card">
-                            <div class="playbutton">
-                                <img src="svg/playbutton.svg" alt="">
-                            </div>
-                            <img class="songphoto"
-                                src="https://i.scdn.co/image/ab67706f000000023f7b39872b6bb36288c1a52c" alt="">
-                            <h2>Hot Hits Hindi</h2>
-                            <p>Hottest Hindi music that India is listening to. Cover - Stree 2</p>
-                        </div>
-                        <div class="card">
-                            <div class="playbutton">
-                                <img src="svg/playbutton.svg" alt="">
-                            </div>
-                            <img class="songphoto"
-                                src="https://i.scdn.co/image/ab67706f000000023f7b39872b6bb36288c1a52c" alt="">
-                            <h2>Hot Hits Hindi</h2>
-                            <p>Hottest Hindi music that India is listening to. Cover - Stree 2</p>
-                        </div>
-                        <div class="card">
-                            <div class="playbutton">
-                                <img src="svg/playbutton.svg" alt="">
-                            </div>
-                            <img class="songphoto"
-                                src="https://i.scdn.co/image/ab67706f000000023f7b39872b6bb36288c1a52c" alt="">
-                            <h2>Hot Hits Hindi</h2>
-                            <p>Hottest Hindi music that India is listening to. Cover - Stree 2</p>
-                        </div>
-                        <div class="card">
-                            <div class="playbutton">
-                                <img src="svg/playbutton.svg" alt="">
-                            </div>
-                            <img class="songphoto"
-                                src="https://i.scdn.co/image/ab67706f000000023f7b39872b6bb36288c1a52c" alt="">
-                            <h2>Hot Hits Hindi</h2>
-                            <p>Hottest Hindi music that India is listening to. Cover - Stree 2</p>
-                        </div>
-                        <div class="card">
-                            <div class="playbutton">
-                                <img src="svg/playbutton.svg" alt="">
-                            </div>
-                            <img class="songphoto"
-                                src="https://i.scdn.co/image/ab67706f000000023f7b39872b6bb36288c1a52c" alt="">
-                            <h2>Hot Hits Hindi</h2>
-                            <p>Hottest Hindi music that India is listening to. Cover - Stree 2</p>
-                        </div>
-                        <div class="card">
-                            <div class="playbutton">
-                                <img src="svg/playbutton.svg" alt="">
-                            </div>
-                            <img class="songphoto"
-                                src="https://i.scdn.co/image/ab67706f000000023f7b39872b6bb36288c1a52c" alt="">
-                            <h2>Hot Hits Hindi</h2>
-                            <p>Hottest Hindi music that India is listening to. Cover - Stree 2</p>
-                        </div>
-                        <div class="card">
+                        <div data-folder="new" class="card">
                             <div class="playbutton">
                                 <img src="svg/playbutton.svg" alt="">
                             </div>
@@ -167,21 +95,27 @@
                 </div>
                 <div class="playbar">
                     <div class="topPart">
-                       <div class="playinfo">
-                        Abhishek Sharma
-                    </div>
-                    <div class="songbuttons">
-                        <img id="previous" class="invert" src="svg/previous.svg" alt="">
-                        <div class="playbox">
-                            <img id="play" class="invert" src="play.svg" alt="">
+                        <div class="playinfo">
                         </div>
-                        <img id="next" class="invert" src="svg/next.svg" alt="">
+                        <div class="songbuttons">
+                            <img id="previous" class="invert" src="svg/previous.svg" alt="">
+                            <div class="playbox">
+                                <img id="play" class="invert" src="play.svg" alt="">
+                            </div>
+                            <img id="next" class="invert" src="svg/next.svg" alt="">
+                        </div>
+                        <div class="time-volume">
+                            <div class="playtime">
+                                00:00/00:00
+                            </div>
+                            <div class="volume-container">
+                                <input type="range" class="volume-slider" min="0" max="100" value="50" orient="vertical">
+                                <img class="volume invert" src="svg/volume.svg" alt="Volume">
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="playtime">
-                        
-                    </div> 
-                    </div>
-                    
+
                     <div class="seekbar">
                         <div class="circle">
                         </div>
