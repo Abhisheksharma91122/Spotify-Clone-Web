@@ -1,4 +1,4 @@
-console.log(`Let's write some javascript`);
+console.log(`welcome`);
 // global variables
 let songs;
 let currentsong = new Audio();
@@ -20,7 +20,7 @@ function secondsToMinutesSeconds(seconds) {
 // getsong function
 async function getSongs(folder) {
     currfolder = folder;
-    let a = await fetch(`http://127.0.0.1:3000/${folder}/`);
+    let a = await fetch(`/${folder}/`);
     let response = await a.text();
     // console.log(response)
     let div = document.createElement("div")
@@ -73,10 +73,10 @@ async function getSongs(folder) {
 // play selected song
 const playMusic = (track, paused = false) => {
     currentsong.src = `/${currfolder}/128-` + track + "128%20Kbps.mp3";
-    console.log(currentsong.src)
+    // console.log(currentsong.src)
     if (!paused) {
         currentsong.play();
-        play.src = "pause.svg";
+        play.src = "svg/pause.svg";
     }
     document.querySelector(".topPart").querySelector(".playinfo").innerHTML = decodeURI(track);
 }
@@ -84,7 +84,7 @@ const playMusic = (track, paused = false) => {
 
 
 async function displayAlbums() {
-    let a = await fetch(`http://127.0.0.1:3000/song/`);
+    let a = await fetch(`/song/`);
     let response = await a.text();
     let div = document.createElement("div")
     div.innerHTML = response;
@@ -96,11 +96,13 @@ async function displayAlbums() {
         if (e.href.includes("/song")) {
             let folder = e.href.split("/").slice(-2)[0];
             // folder display the name of folder in the song
-            // console.log(folder)
+            // console.log(folder);
             // get the metadata of the folder
-            let a = await fetch(`http://127.0.0.1:3000/song/${folder}/info.json`);
+            let a = await fetch(`/song/${folder}/info.json`);
             let response = await a.json();
-            console.log(response);
+            // console.log(response);
+            // console.log(response.description);
+            // console.log(response);
             cardconatiner.innerHTML = cardconatiner.innerHTML + `<div data-folder="${folder}" class="card">
                             <div class="playbutton">
                                 <img src="svg/playbutton.svg" alt="">
@@ -108,7 +110,7 @@ async function displayAlbums() {
                             <img class="songphoto"
                                 src="/song/${folder}/cover.jpg" alt="">
                             <h2>${response.title}</h2>
-                            <p>${response.discription}</p>
+                            <p>${response.description}</p>
                         </div>`;
         }
     }
@@ -141,10 +143,10 @@ async function main() {
     play.addEventListener("click", () => {
         if (currentsong.paused) {
             currentsong.play();
-            play.src = "pause.svg";
+            play.src = "svg/pause.svg";
         } else {
             currentsong.pause();
-            play.src = "play.svg";
+            play.src = "svg/play.svg";
         }
     })
     // update the time and circle in seekbar
@@ -188,7 +190,6 @@ async function main() {
             playMusic(songs[index - 1]);
         }
         // console.log(songs);
-
     })
 
     // add an event listener to next button
@@ -205,20 +206,42 @@ async function main() {
 
 
     // add event listener to volume
-    let clickcount = 1;
-    document.querySelector(".volume").addEventListener("click", () => {
-        console.log("its work");
+    document.querySelector(".volume").addEventListener("click", (e) => {
+        e.stopPropagation();  // slider not disapper when clicking on volume button
         document.querySelector(".volume-slider").style.display = "inline";
-        clickcount++;
-        if (clickcount % 2 !== 0) {
-            document.querySelector(".volume-slider").style.display = "none";
-        }
     })
 
     // adding event listener to volume slider 
     document.querySelector(".volume-slider").addEventListener("change", (e) => {
         console.log("setting volume to :", e.target.value, "/100");
         currentsong.volume = parseInt(e.target.value) / 100;
+        if(currentsong.volume > 0){
+            document.querySelector(".volume").src = document.querySelector(".volume").src.replace("mute.svg","volume.svg");
+        }
+    })
+    
+    // pervent disappering slider when click 
+    document.querySelector(".volume-slider").addEventListener("click", (e) => {
+        e.stopPropagation();
+    })
+    
+
+    // volume slider visibility
+    document.addEventListener("click",()=>{
+        document.querySelector(".volume-slider").style.display = "none";
+    })
+
+    // mute volume when clicking on volume button 
+    document.querySelector(".volume").addEventListener("click",(e)=>{
+        if (e.target.src.includes("volume.svg")) {
+            e.target.src = e.target.src.replace("volume.svg","mute.svg");
+            currentsong.volume = 0;
+            document.querySelector(".volume-slider").value = 0;
+        } else {
+            e.target.src = e.target.src.replace("mute.svg","volume.svg");
+            currentsong.volume = .10;
+            document.querySelector(".volume-slider").value = 10;
+        }
     })
 }
 
